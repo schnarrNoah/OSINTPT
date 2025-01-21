@@ -25,5 +25,10 @@ OSINTPT/
 │   ├── test_vulnerability_lookup.py
 │   ├── test_penetration_testing.py
 │   └── test_report_generator.py
-├── requirements.txt
+│
+├── configurations/
+│   ├── requirements.txt
+│   ├── config.txt
+│   └── folder_structure.txt (this file)
+│
 └── README.md
