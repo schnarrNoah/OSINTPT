@@ -1,3 +1,4 @@
 '''
-Funktionen: Logging und Debugging.
+Funktionen:
+    Logging und Debugging.
 '''

@@ -1,3 +1,4 @@
 '''
-Funktionen: Dateioperationen (Lesen, Schreiben, Analysieren).
+Funktionen:
+    Dateioperationen (Lesen, Schreiben, Analysieren).
 '''

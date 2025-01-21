@@ -10,10 +10,10 @@ class DataHarvester:
 
     def __init__(self):
         # SHODAN --------------------------------------------------------------------------------
-        self.search_shodan('shodan_api_key', 'apache')
+        self.search_shodan('shodan_api_key', '')
 
         # HAVE I BEEN PWNED ---------------------------------------------------------------------
-        self.check_email_pwned('test@example.com')
+        self.check_email_pwned('e@x.com')
 
         # VIRUSTOTAL ----------------------------------------------------------------------------
         self.check_file_with_virustotal('dein_virustotal_api_key', 'hash_of_the_file')

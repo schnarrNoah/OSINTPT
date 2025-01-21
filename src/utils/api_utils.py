@@ -1,5 +1,6 @@
 '''
-Funktionen: API-Abfragen (z. B. Shodan, Have I Been Pwned).
+Funktionen:
+    API-Abfragen (z. B. Shodan, Have I Been Pwned).
 '''
 import shodan
 import requests
@@ -12,7 +13,7 @@ def search_shodan(api_key, query):
         Du kannst mit Shodan herausfinden, welche Geräte (wie Router, Server, IoT-Geräte)
         öffentlich zugänglich sind und welche Schwachstellen sie möglicherweise haben.
     """
-    api = shodan.Shodan(api_key)
+    git add. & & git commit - m "feat: establish base code hierarchy and structure" && git push origin master
 
     try:
         # Suche auf Shodan mit der angegebenen Anfrage

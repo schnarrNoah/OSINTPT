@@ -7,7 +7,7 @@ class Main:
 
         load_dotenv(dotenv_path="configurations/config.env")
         API_SHODAN = os.getenv("SHODAN_API_KEY")
-        print(API_SHODAN)
+        print(f"Shodan: ",API_SHODAN)
 
 
         #print("Netzwerkinformationen abrufen:")

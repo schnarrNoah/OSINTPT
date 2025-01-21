@@ -1,3 +1,7 @@
+"""
+    only for test purpose
+"""
+
 import paramiko
 
 def check_ssh_conn(ip, username, password):

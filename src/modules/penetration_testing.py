@@ -12,7 +12,7 @@ def run_hydra():
     """Hydra"""
     try:
         result = subprocess.run(
-            ['hydra', '-l', 'admin', '-P', 'passwords.txt', '192.168.1.1', 'ssh'],
+            ['hydra', '-l', 'admin', '-P', 'passwordlist.txt', '192.168.1.1', 'ssh'],
             capture_output=True,
             text=True
         )

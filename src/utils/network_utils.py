@@ -1,7 +1,8 @@
 """
-Funktionen: IP-Bereichsanalyse,
-            DNS-Lookup,
-            Subnetzermittlung.
+Funktionen:
+    IP-Bereichsanalyse,
+    DNS-Lookup,
+    Subnetzermittlung.
 """
 import socket
 import psutil
