@@ -1,0 +1,29 @@
+OSINTPT/
+├── src/
+│   ├── __init__.py
+│   ├── main.py
+│   │
+│   ├── modules/
+│   │   ├── __init__.py
+│   │   ├── data_harvester.py
+│   │   ├── metadata_extractor.py
+│   │   ├── vulnerability_lookup.py
+│   │   ├── penetration_testing.py
+│   │   ├── report_generator.py
+│   │   └── database_handler.py
+│   │
+│   └── utils/
+│       ├── __init__.py
+│       ├── network_utils.py
+│       ├── api_utils.py
+│       ├── file_utils.py
+│       └── log_utils.py
+│
+├── tests/
+│   ├── test_data_harvester.py
+│   ├── test_metadata_extractor.py
+│   ├── test_vulnerability_lookup.py
+│   ├── test_penetration_testing.py
+│   └── test_report_generator.py
+├── requirements.txt
+└── README.md
