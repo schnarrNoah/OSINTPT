@@ -13,28 +13,51 @@ color = {
     'gray': "\033[1;37m",
     'dark_gray': "\033[0;30m",
     'light_red': "\033[0;31m",
+    'reset': "\033[0m"
 }
 
+
+
 def print_banner():
-    os.system('cls' if os.name == 'nt' else 'clear')  # Bildschirm löschen (je nach OS)
-
-    print('\n' + color['red'] + "=" * 60)  # Grüner Balken am Anfang
-    print(color['red'] + " " * 15 + "Welcome to OSINT PENETRATION")  # Titel in Blau
-    print(color['red'] + "=" * 60)  # Grüner Balken am Ende
-
-    print("\n\033[1;37m" + "Starting the Data Collection...\n")  # Start-Text in Weiß
-
-    time.sleep(1)
-
-    print("\033[1;33m[1] \033[1;37mSearching Shodan for IoT Devices...")  # Gelbe Nummer und weiße Beschreibung
-    time.sleep(1)
-    print(
-        "\033[1;33m[2] \033[1;37mChecking HaveIBeenPwned for breached email...")  # Gelbe Nummer und weiße Beschreibung
-    time.sleep(1)
-    print(
-        "\033[1;33m[3] \033[1;37mChecking VirusTotal for file hash analysis...\n")  # Gelbe Nummer und weiße Beschreibung
-
-    print("\033[1;32m" + "=" * 60)  # Grüner Balken für das Ende
+    """Zeigt ein Banner und ein Menü an, gibt eine gültige Auswahl zurück."""
+    clear()
+    print('\n' + color['red'] + "=" * 60)
+    print(color['red'] + " " * 15 + "Welcome to OSINT PENETRATION")
+    print(color['red'] + "=" * 60 + color['reset'])
 
 
-print_banner()
+def run_ui(menu_options):
+    """
+    Führt OSINT-Operationen durch und gibt Ergebnisse aus.
+    """
+
+    for option in menu_options:
+        print(color['yellow'] + option[:len(menu_options)] + color['white'] + option[len(menu_options):])
+        time.sleep(0.5)
+    print(f"{color['green']}=" * 60 + f"{color['reset']}\n")  # Grüner Balken unten
+
+    # Nutzerauswahl
+    while True:
+        try:
+            case = int(input("\t> "))
+            if 1 <= case <= len(menu_options):
+                return case  # Gibt die gültige Auswahl zurück
+            else:
+                print(f"{color['red']} Bitte wähle eine gültige Option (1-{len(menu_options)})." + color['reset'])
+        except ValueError:
+            print(color['red'] + "Ungültige Eingabe. Bitte eine Zahl eingeben." + color['reset'])
+
+
+
+
+##############################################################################################
+
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear') # Bildschirm löschen (je nach OS)
+
+def loading_animation():
+    for char in "==" * 30:
+        print(color['red'] + char, end="", flush=True)  # Zeichen einzeln ausgeben
+        time.sleep(0.1)
+    print(color['reset'])  # Farbe zurücksetzen

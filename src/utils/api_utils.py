@@ -3,13 +3,13 @@ import shodan as s
 from dotenv import load_dotenv
 
 # Load environment variables
-load_dotenv(dotenv_path="../../configurations/config.env")
+load_dotenv(dotenv_path=os.path.join(os.getcwd(), 'configurations', 'config.env'))
 
 # API-Schlüssel laden
 API_KEYS = {
     'SHODAN': os.getenv("SHODAN_API_KEY"),
     'HIBP': os.getenv("HIBP_API_KEY"),
-    'VIRUSTOTAL': os.getenv("VT_API_KEY"),
+    'VIRUSTOTAL': os.getenv("VIRUSTOTAL_API_KEY"),
 }
 
 # Globale Clients/Verbindungen
@@ -27,7 +27,7 @@ def init_api_conn():
     try:
         # Shodan-Client
         if API_KEYS['SHODAN']:
-            connections['shodan'] = s.Shodan(API_KEYS['SHODAN'], None)
+            connections['shodan'] = s.Shodan(API_KEYS['SHODAN'])
             print("Shodan-Verbindung hergestellt.")
         else:
             print("Kein Shodan-API-Key gefunden.")

@@ -30,7 +30,7 @@ OSINTPT/
 │
 ├── configurations/
 │   ├── requirements.txt
-│   ├── config.txt
+│   ├── config.env
 │   └── folder_structure.txt (this file)
 │
 └── README.md

@@ -1,5 +1,5 @@
 Requirements
-
+Python Version 3.10
 psutil
 requests
 shodan
