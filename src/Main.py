@@ -2,6 +2,7 @@ import modules.data_harvester as dh
 import utils.terminal_utils as x_tp
 import utils.api_utils as x_api
 import utils.file_utils as x_file
+import modules.vulnerability_lookup as vuln
 from dotenv import load_dotenv
 import os
 
@@ -29,7 +30,7 @@ class Main:
     def __init__(self):
         load_dotenv(dotenv_path=os.path.join(os.getcwd(), 'configurations', 'config.env'))
         x_tp.print_banner()
-        match x_tp.run_ui(self.main_menu_options):
+        match x_tp.run_case_ui(self.main_menu_options):
             case 1:
                 # Call OSINT func
                 self.osint()
@@ -43,25 +44,37 @@ class Main:
 #---------------------------------------------------------------------------------
 
     def osint(self):
+
+        osint = dh.DataHarvester()
+
         print("\nStarting OSINT-Modul ...")
-        match x_tp.run_ui(self.osint_menu_options):
+        match x_tp.run_case_ui(self.osint_menu_options):
             case 1:
                 # Shodan Search
-                dh.DataHarvester().search_shodan("IoT devices")
+                x_tp.clear()
+                osint.search_shodan(x_tp.run_shodan_ui())
                 pass
             case 2:
                 # Have I Been Pwned
                 pass
             case 3:
                 # Virus Total Lookup
+                x_tp.clear()
+                osint.check_with_virustotal(dh.VirusTotalAction.FILE_UPLOAD, x_tp.run_virustotal_ui())
+                osint.check_with_virustotal(dh.VirusTotalAction.FILE_REPORT, x_tp.run_virustotal_ui())
+                osint.check_with_virustotal(dh.VirusTotalAction.URL_SCAN, x_tp.run_virustotal_ui())
                 pass
             case 4:
                 # Vulnerability Lookup
+                x_tp.clear()
+                param = x_tp.run_vulnlookup_ui()
+                vuln.start_metasploit_vuln_lookup(service=param['service'], version=param['version'])
+
                 pass
 
     def penetration(self):
         print("\nStarting PENTESTING-Modul ...")
-        match x_tp.run_ui(self.pentest_menu_options):
+        match x_tp.run_case_ui(self.pentest_menu_options):
             case 1:
                 # Brute Force with Hydra
                 pass
@@ -69,31 +82,12 @@ class Main:
                 # Network Scanning with Nmap
                 pass
 
-        #print("API-Verbindungen initialisieren...")
-        #x_api.init_api_conn()
 
-        #query = "IoT devices"  # Beispiel-Query
-        #self.harvester.search_shodan(query)
-
-        #email = "example@example.com"  # Beispiel-E-Mail
-        #self.harvester.check_email_pwned(email)
-
-        #file_hash = "d41d8cd98f00b204e9800998ecf8427e"  # Beispiel-Hash
-        #self.harvester.check_file_with_virustotal(file_hash)
 
 # ============================================================================
 
-        # Data Harvester initialisieren
-        #print("Daten sammeln...")
-        #self.harvester = dh.DataHarvester()
-
-        # Beispielaufrufe von Methoden
-        #self.run_harvester()
-
-
-
-        # Netzwerkinformationen abrufen
-        #self.get_network_info()
+    # Netzwerkinformationen abrufen
+    #self.get_network_info()
 
     #print("Netzwerkinformationen abrufen:")
 

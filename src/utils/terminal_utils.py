@@ -17,30 +17,48 @@ color = {
 }
 
 def print_banner():
-    """Zeigt ein Banner und ein Menü an, gibt eine gültige Auswahl zurück."""
+    """
+    Shows banner
+    """
     clear()
     print('\n' + color['red'] + "=" * 60)
     print(color['red'] + " " * 15 + "Welcome to OSINT PENETRATION")
     print(color['red'] + "=" * 60 + color['reset'])
 
-def run_ui(menu_options):
+def run_case_ui(menu_options):
     """
-    Führt OSINT-Operationen durch und gibt Ergebnisse aus.
+    Run user interface and catches input dynamically
     """
     for option in menu_options:
+        time.sleep(0.25)
         print(color['yellow'] + option[:len(menu_options)] + color['white'] + option[len(menu_options):])
-        time.sleep(0.5)
+    time.sleep(0.25)
     print(f"{color['green']}=" * 60 + f"{color['reset']}\n")
-    # Nutzerauswahl
+
+    # User selection
     while True:
         try:
             case = int(input("\t> "))
             if 1 <= case <= len(menu_options):
-                return case  # Gibt die gültige Auswahl zurück
+                return case
             else:
                 print(f"{color['red']} Bitte wähle eine gültige Option (1-{len(menu_options)})." + color['reset'])
         except ValueError:
             print(color['red'] + "Ungültige Eingabe. Bitte eine Zahl eingeben." + color['reset'])
+
+
+def run_shodan_ui():
+    return input(f"{color['blue']}\tSearch shodan > {color['red']}")
+
+def run_virustotal_ui():
+    return input(f"{color['blue']}\tSearch virustotal > {color['red']}")
+
+def run_vulnlookup_ui():
+    param = {
+        'service' : input(f"{color['blue']}\tSearch for service > {color['red']}"),
+        'version' : input(f"{color['blue']}\tVersion of service > {color['red']}"),
+    }
+    return param
 
 ##############################################################################################
 
@@ -49,6 +67,6 @@ def clear():
 
 def loading_animation():
     for char in "==" * 30:
-        print(color['red'] + char, end="", flush=True)  # Zeichen einzeln ausgeben
+        print(color['red'] + char, end="", flush=True)
         time.sleep(0.1)
     print(color['reset'])  # Farbe zurücksetzen
