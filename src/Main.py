@@ -9,7 +9,7 @@ import os
 
 class Main:
     """
-        Main entry point and program flow control
+        Main entry point and program flow control...
     """
     main_menu_options = [
         "[1] OSINT Tools",  # osint_menu_options

@@ -11,7 +11,7 @@ class DataHarvester:
 
     def __init__(self):
         """
-        API init.
+        API init...
         """
         api.load_var()
         api.init_api_conn()

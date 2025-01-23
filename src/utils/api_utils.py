@@ -7,7 +7,7 @@ connections = {}
 
 def load_var():
     """
-    Load keys, global clients and connections
+    Load keys, global clients and connections...
     """
     global API_KEYS, connections  # Only list global references that should be re-written
     API_KEYS = {
@@ -23,7 +23,7 @@ def load_var():
 
 def init_api_conn():
     """
-    Init API connections.
+    Init API connections...
     """
     global connections
     try:
@@ -51,7 +51,7 @@ def init_api_conn():
 
 def ensure_shodan_connection():
     """
-    Shodan API established?.
+    Shodan API established?...
     """
     global connections
     if not connections['shodan']:
