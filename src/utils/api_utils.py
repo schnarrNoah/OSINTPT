@@ -1,9 +1,5 @@
 import os
 import shodan as s
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv(dotenv_path=os.path.join(os.getcwd(), 'configurations', 'config.env'))
 
 # API-Schlüssel laden
 API_KEYS = {
@@ -11,7 +7,6 @@ API_KEYS = {
     'HIBP': os.getenv("HIBP_API_KEY"),
     'VIRUSTOTAL': os.getenv("VIRUSTOTAL_API_KEY"),
 }
-
 # Globale Clients/Verbindungen
 connections = {
     'shodan': None,
@@ -25,24 +20,25 @@ def init_api_conn():
     """
     global connections
     try:
-        # Shodan-Client
+        print(os.getenv("SHODAN_API_KEY"))
+        # Shodan-Client --------------------------------------------------------
         if API_KEYS['SHODAN']:
             connections['shodan'] = s.Shodan(API_KEYS['SHODAN'])
             print("Shodan-Verbindung hergestellt.")
         else:
             print("Kein Shodan-API-Key gefunden.")
-
-        # HIBP
+        # HIBP ----------------------------------------------------------------
         if not API_KEYS['HIBP']:
             print("Kein HIBP-API-Key gefunden.")
         else:
             print("HIBP-Verbindung hergestellt.")
-
-        # VirusTotal
+        # VirusTotal -------------------------------------------------------------
         if not API_KEYS['VIRUSTOTAL']:
-            print("Kein VirusTotal-API-Key gefunden.")
+            print("Kein VirusTotal-API-Keygefunden.")
         else:
             print("VirusTotal-Verbindung hergestellt.")
+    except s.APIError as e:
+        print(f"Shodan-API-Fehler: {e}")
     except Exception as e:
         print(f"Fehler beim Initialisieren der Verbindungen: {e}")
 
@@ -54,7 +50,6 @@ def ensure_shodan_connection():
     if not connections['shodan']:
         try:
             connections['shodan'] = s.Shodan(API_KEYS['SHODAN'])
-            print("Shodan-Verbindung neu hergestellt.")
         except Exception as e:
             print(f"Fehler beim Wiederherstellen der Shodan-Verbindung: {e}")
             return False

@@ -16,8 +16,6 @@ color = {
     'reset': "\033[0m"
 }
 
-
-
 def print_banner():
     """Zeigt ein Banner und ein Menü an, gibt eine gültige Auswahl zurück."""
     clear()
@@ -25,17 +23,14 @@ def print_banner():
     print(color['red'] + " " * 15 + "Welcome to OSINT PENETRATION")
     print(color['red'] + "=" * 60 + color['reset'])
 
-
 def run_ui(menu_options):
     """
     Führt OSINT-Operationen durch und gibt Ergebnisse aus.
     """
-
     for option in menu_options:
         print(color['yellow'] + option[:len(menu_options)] + color['white'] + option[len(menu_options):])
         time.sleep(0.5)
-    print(f"{color['green']}=" * 60 + f"{color['reset']}\n")  # Grüner Balken unten
-
+    print(f"{color['green']}=" * 60 + f"{color['reset']}\n")
     # Nutzerauswahl
     while True:
         try:
@@ -47,11 +42,7 @@ def run_ui(menu_options):
         except ValueError:
             print(color['red'] + "Ungültige Eingabe. Bitte eine Zahl eingeben." + color['reset'])
 
-
-
-
 ##############################################################################################
-
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear') # Bildschirm löschen (je nach OS)

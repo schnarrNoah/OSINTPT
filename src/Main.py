@@ -2,6 +2,8 @@ import modules.data_harvester as dh
 import utils.terminal_utils as x_tp
 import utils.api_utils as x_api
 import utils.file_utils as x_file
+from dotenv import load_dotenv
+import os
 
 
 class Main:
@@ -25,6 +27,7 @@ class Main:
     ]
 
     def __init__(self):
+        load_dotenv(dotenv_path=os.path.join(os.getcwd(), 'configurations', 'config.env'))
         x_tp.print_banner()
         match x_tp.run_ui(self.main_menu_options):
             case 1:
@@ -44,6 +47,7 @@ class Main:
         match x_tp.run_ui(self.osint_menu_options):
             case 1:
                 # Shodan Search
+                dh.DataHarvester().search_shodan("IoT devices")
                 pass
             case 2:
                 # Have I Been Pwned
@@ -65,11 +69,8 @@ class Main:
                 # Network Scanning with Nmap
                 pass
 
-
-
         #print("API-Verbindungen initialisieren...")
         #x_api.init_api_conn()
-
 
         #query = "IoT devices"  # Beispiel-Query
         #self.harvester.search_shodan(query)
@@ -79,7 +80,6 @@ class Main:
 
         #file_hash = "d41d8cd98f00b204e9800998ecf8427e"  # Beispiel-Hash
         #self.harvester.check_file_with_virustotal(file_hash)
-
 
 # ============================================================================
 

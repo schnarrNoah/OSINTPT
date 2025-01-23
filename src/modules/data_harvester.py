@@ -17,11 +17,11 @@ class DataHarvester:
             try:
                 results = api.connections['shodan'].search(query)
                 for result in results['matches']:
-                    print(f"IP-Adresse: {result['ip_str']}")
-                    print(f"Port: {result['port']}")
-                    print(f"Organisation: {result.get('org', 'N/A')}")
-                    print(f"Geolocation: {result.get('location', 'N/A')}")
-                    print(f"Service: {result.get('product', 'N/A')}")
+                    print(f"IP-Adresse:\t\t{result['ip_str']}")
+                    print(f"Port:\t\t\t{result['port']}")
+                    print(f"Organisation:\t{result.get('org', 'N/A')}")
+                    print(f"Geolocation:\t{result.get('location', 'N/A')}")
+                    print(f"Service:\t\t{result.get('product', 'N/A')}")
                     print("-" * 50)
             except Exception as e:
                 print(f"Fehler bei der Shodan-Abfrage: {e}")
