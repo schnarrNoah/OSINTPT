@@ -28,6 +28,7 @@ class Main:
     ]
 
     def __init__(self):
+        os.environ['TERM'] = 'xterm-256color'
         load_dotenv(dotenv_path=os.path.join(os.getcwd(), 'configurations', 'config.env'))
         x_tp.print_banner()
         match x_tp.run_case_ui(self.main_menu_options):
